@@ -68,7 +68,7 @@ docker run -d \
 {% endfor %}
 {% endif %}
 {% if param_usage_include_env %}
-{% for item in param_env_vars %}
+{% for item in param_env_vars if not item.env_var | lower is eq "tz" %}
   -e {{ item.env_var }}={{ item.env_value }} \
 {% endfor %}
 {% endif %}
